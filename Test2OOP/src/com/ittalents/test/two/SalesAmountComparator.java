@@ -1,4 +1,4 @@
-package com.ittalents.warehouse;
+package com.ittalents.test.two;
 
 import java.util.Comparator;
 

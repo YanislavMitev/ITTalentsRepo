@@ -1,5 +1,8 @@
-package com.ittalents.warehouse;
+package com.ittalents.test.two;
 
+import com.ittalents.test.two.warehouse.Warehouse;
+
+import java.util.Map;
 import java.util.Set;
 
 //TODO: EXCEPTION HANDLING
@@ -26,18 +29,36 @@ public class Distributor extends Contact {
         return this.shop;
     }
 
-    public void loadShop(Shop shop, Set<Stock> products) {
+    public void loadShop(Warehouse warehouse, Shop shop, Map<Stock, Integer> items) {
         this.moneyFromCurrentLoading = 0;
 
-        if (shop != null && products != null && !products.isEmpty()) {
-            for (Stock stock : products) {
-                int price = stock.getPrice();
-                stock.setPrice(price + (int) (price * COMMISSION));
-                shop.addStock(stock);
-                this.moneyFromCurrentLoading += price;
-                this.increaseMyMoney((int) (price * COMMISSION));
+        items.forEach( (key, value) -> {
+            int itemQuantity = shop.getQuantityOf(key);
+
+            if(itemQuantity != 0) {
+                shop.addStock(key, value + itemQuantity);
+            } else {
+                shop.addStock(key, value);
             }
-        }
+
+            int commissionAmmount = (int) (key.getPrice() * COMMISSION);
+            int price = key.getPrice() + commissionAmmount;
+
+            this.moneyFromCurrentLoading += price;
+            this.increaseMyMoney(commissionAmmount);
+
+            warehouse.decreaseMyMoney(price);
+
+        });
+//        if (shop != null && products != null && !products.isEmpty()) {
+//            for (Stock stock : products) {
+//                int price = stock.getPrice();
+//                stock.setPrice(price + (int) (price * COMMISSION));
+//                shop.addStock(stock);
+//                this.moneyFromCurrentLoading += price;
+//                this.increaseMyMoney((int) (price * COMMISSION));
+//            }
+//        }
     }
 
     public void increaseMyMoney(int money) {

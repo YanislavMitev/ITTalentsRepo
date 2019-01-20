@@ -1,4 +1,4 @@
-package com.ittalents.warehouse;
+package com.ittalents.test.two;
 
 //TODO:EXCEPTION HANDLING
 //TODO:Move widespread methods and fields from inheritors

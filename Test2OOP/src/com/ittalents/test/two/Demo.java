@@ -1,4 +1,6 @@
-package com.ittalents.warehouse;
+package com.ittalents.test.two;
+
+import com.ittalents.test.two.warehouse.Warehouse;
 
 public class Demo {
     public static void main(String[] args) {
@@ -41,9 +43,9 @@ public class Demo {
         //add random amount of goods in warehouse 3
         addGoodsToWarehouse(warehouse3);
 
-        warehouse1.deliver(Utils.getRandomSetOfGoods(), new Shop(Utils.getRandomShopName()));
-        warehouse2.deliver(Utils.getRandomSetOfGoods(), new Shop(Utils.getRandomShopName()));
-        warehouse3.deliver(Utils.getRandomSetOfGoods(), new Shop(Utils.getRandomShopName()));
+        warehouse1.deliver(Utils.getRandomDeliveries());
+        warehouse2.deliver(Utils.getRandomDeliveries());
+        warehouse3.deliver(Utils.getRandomDeliveries());
 
         //statistics for warehouse 1
         System.out.println("Warehouse 1");
@@ -66,17 +68,17 @@ public class Demo {
 
     private static void displayStatisticsForWarehouse(Warehouse warehouse1) {
         for (Stock stock : warehouse1.getTheMostSellingGoods()) {
-            System.out.println(stock.getType() + " : " + stock.getQuantity());
+            System.out.println(stock.getType() + " : mocked quantity");
         }
         for (Worker worker : warehouse1.getTheWorstWorker()) {
-            System.out.println(worker.getName() + " : " + worker.getPrietiStoki());
+            System.out.println(worker.getName() + " : " + worker.getAcceptedGoods());
         }
         warehouse1.getStatistics();
     }
 
     private static void addGoodsToWarehouse(Warehouse warehouse1) {
         for (int index = 0; index < (int) (Math.random() * 30) + 1; index++) {
-            warehouse1.addStock(new Stock(Utils.getRandomStock(), Utils.getRandomPrice(), Utils.getRandomQuantity()));
+            warehouse1.addStock(new Stock(Utils.getRandomStock(), Utils.getRandomPrice()), Utils.getRandomQuantity());
         }
     }
 

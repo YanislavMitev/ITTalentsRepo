@@ -1,4 +1,4 @@
-package com.ittalents.warehouse;
+package com.ittalents.test.two;
 
 //TODO:EXCEPTION HANDLING
 public class Stock {
@@ -7,27 +7,16 @@ public class Stock {
 
     private String type;
     private int price;
-    private int quantity;
     private int numberOfSales;
 
-    public Stock(String type, int price, int quantity) {
+    public Stock(String type, int price) {
         this.setType(type);
         this.setPrice(price);
-        this.setQuantity(quantity);
         this.numberOfSales = 0;
     }
 
     public void increaseSales() {
         this.numberOfSales++;
-    }
-
-    private void setQuantity(int quantity) {
-        if (quantity > 0) {
-            this.quantity = quantity;
-        } else {
-            System.out.println("Invalid quantity. Assigning to 0.");
-            this.quantity = 0;
-        }
     }
 
     public void setPrice(int price) {
@@ -54,10 +43,6 @@ public class Stock {
 
     public int getPrice() {
         return this.price;
-    }
-
-    public int getQuantity() {
-        return this.quantity;
     }
 
     public int getSales() {

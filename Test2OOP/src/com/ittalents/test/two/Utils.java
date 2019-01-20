@@ -1,7 +1,6 @@
-package com.ittalents.warehouse;
+package com.ittalents.test.two;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.*;
 
 //TODO: REFACTOR NAMES, ADDRESSES, GOODS, SHOPS
 public final class Utils {
@@ -59,20 +58,58 @@ public final class Utils {
                 "Maratonki", "Banani", "Mecheta", "Gashti", "Chorapi", "Aerozol",
                 "Muhozol", "Chereshi"};
 
-        return goods[(int) Math.random() * goods.length];
+        return goods[(int) (Math.random() * goods.length)];
     }
 
     public static String getRandomShopName() {
         String[] shops = {"345", "Fantastiko", "Bila", "Lidl", "Kaufland", "Pikadili", "Costco"};
 
-        return shops[(int) Math.random() * shops.length];
+        return shops[(int) (Math.random() * shops.length)];
     }
 
     public static Set<Stock> getRandomSetOfGoods() {
         Set<Stock> goods = new LinkedHashSet<>();
         for (int index = 0; index < (int) (Math.random() * 10) + 1; index++) {
-            goods.add(new Stock(getRandomStock(), getRandomPrice(), getRandomQuantity()));
+            goods.add(new Stock(getRandomStock(), getRandomPrice()));
         }
         return goods;
+    }
+
+    public static Map<LinkedList<Shop>, Map<Stock, Integer>> getRandomDeliveries() {
+        Map<LinkedList<Shop>, Map<Stock, Integer>> deliveries = new HashMap<>();
+
+        LinkedList<Shop> shops = getRandomListOfShops();
+
+        deliveries.put(shops, getRandomStocks(shops.size()));
+
+        return deliveries;
+    }
+
+    private static LinkedList<Shop> getRandomListOfShops() {
+        int amount = (int) (Math.random() * 10) + 1;
+        LinkedList<Shop> shops = new LinkedList<>();
+
+        for(int index = 0; index < amount; index++) {
+            shops.add(new Shop(getRandomShopName()));
+        }
+
+        return shops;
+    }
+
+    private static Map<Stock, Integer> getRandomStocks(int amount) {
+        Map<Stock, Integer> items = new HashMap<>();
+
+        for(int index = 0; index < amount; index++) {
+            Stock stock = new Stock(getRandomStock(), getRandomPrice());
+            int stockAmount = (int) (Math.random() * 5) + 1;
+
+            if(items.containsKey(stock)) {
+                continue;
+            }
+
+            items.put(stock, stockAmount);
+        }
+
+        return items;
     }
 }
