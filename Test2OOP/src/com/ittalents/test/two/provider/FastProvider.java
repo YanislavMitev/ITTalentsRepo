@@ -1,8 +1,8 @@
-package com.ittalents.test.two;
+package com.ittalents.test.two.provider;
 
+import com.ittalents.test.two.Stock;
 import com.ittalents.test.two.warehouse.Warehouse;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 

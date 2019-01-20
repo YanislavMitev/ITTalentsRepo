@@ -2,7 +2,7 @@ package com.ittalents.test.two.warehouse;
 
 import com.ittalents.test.two.Shop;
 import com.ittalents.test.two.Stock;
-import com.ittalents.test.two.Worker;
+import com.ittalents.test.two.worker.Worker;
 
 import java.util.LinkedList;
 import java.util.List;

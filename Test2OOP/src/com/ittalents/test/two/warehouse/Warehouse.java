@@ -1,6 +1,8 @@
 package com.ittalents.test.two.warehouse;
 
 import com.ittalents.test.two.*;
+import com.ittalents.test.two.provider.Provider;
+import com.ittalents.test.two.worker.Worker;
 
 import java.util.*;
 import java.util.Map.Entry;

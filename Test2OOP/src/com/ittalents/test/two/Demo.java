@@ -1,6 +1,7 @@
 package com.ittalents.test.two;
 
 import com.ittalents.test.two.warehouse.Warehouse;
+import com.ittalents.test.two.worker.Worker;
 
 public class Demo {
     public static void main(String[] args) {

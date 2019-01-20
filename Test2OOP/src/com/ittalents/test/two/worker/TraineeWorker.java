@@ -1,8 +1,8 @@
-package com.ittalents.test.two;
+package com.ittalents.test.two.worker;
 
+import com.ittalents.test.two.Stock;
 import com.ittalents.test.two.warehouse.Warehouse;
 
-import java.util.List;
 import java.util.Map;
 
 //TODO:EXCEPTION HANDLING
